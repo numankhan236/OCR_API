@@ -1,0 +1,5 @@
+Flask
+jwt
+jsonify
+PIL
+pytesseract
