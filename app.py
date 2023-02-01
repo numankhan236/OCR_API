@@ -37,34 +37,12 @@ def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
-def authenticate(request):
-    """
-    Authenticate the request using JWT.
-    """
-    auth_header = request.headers.get("Authorization")
-    if auth_header:
-        auth_token = auth_header.split(" ")[1]
-    else:
-        return False
-    try:
-        data = jwt.decode(auth_token,  algorithms=['HS256'])
-    except:
-        return False
-    return True
 
-# route and function to handle the upload page
+
 # route and function to handle the upload page
 @app.route('/', methods=['GET', 'POST'])
 def upload_page():  
     if request.method == 'POST':
-        # check if there is an API key in the request
-        if 'api_key' not in request.form:
-            return jsonify({'error': 'No API Key provided...'})
-        api_key = request.form['api_key']
-        # validate the API key
-        if api_key != '2fzdg5lauxlbh7k9m8n6pqrs3uvwbyz01':
-            return jsonify({'error': 'Invalid API Keynomi'})
-        
         # check if there is a file in the request
         if 'file' not in request.files:
             return jsonify({'error': 'No file selected'})
