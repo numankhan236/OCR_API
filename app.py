@@ -63,7 +63,7 @@ def upload_page():
         api_key = request.form['api_key']
         # validate the API key
         if api_key != '2fzdg5lauxlbh7k9m8n6pqrs3uvwbyz01':
-            return jsonify({'error': 'Invalid API Key'})
+            return jsonify({'error': 'Invalid API Keynomi'})
         
         # check if there is a file in the request
         if 'file' not in request.files:
@@ -82,9 +82,7 @@ def upload_page():
                             'extracted_text': extracted_text,
                             'img_src': UPLOAD_FOLDER + file.filename})
     elif request.method == 'GET':
-        return render_template('upload.html')
-    else:
-        pass
+        return ""
 
 
 if __name__ == '__main__':  
